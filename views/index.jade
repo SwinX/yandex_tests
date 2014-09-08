@@ -1,0 +1,9 @@
+extends layout
+block head
+	link(rel='stylesheet', href='/index/css/index.css')
+block content
+	.login_container
+		h2 Enter your name
+		input.loginInput(type='text', name='login', autofocus='autofocus' maxlength=17, autocomplete='off')
+block bottom
+	script(type='text/javascript', src='/index/js/index.js')

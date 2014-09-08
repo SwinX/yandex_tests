@@ -1,0 +1,58 @@
+html, input {
+    font-family:
+    "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #000;
+}
+
+.login_container {
+    width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -200px;
+    display: inline-block;
+}
+
+.login_container h2 {
+    text-align: center;
+    color: #fff;
+    font-weight: 100;
+    font-size: 200%;
+}
+
+.login_container input {
+    height: 50px;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    display: table;
+    font-size: 200%;
+    border: none;
+}
+
+.login_container input[type=text] {
+    width: 400px;
+    background-color: transparent;
+    border-bottom: 2px solid #fff;
+    outline: none;
+    letter-spacing: 3px;
+    color: #fff;
+    font-weight: 100;
+}
+
+.error {
+    border: 2px solid red;
+}

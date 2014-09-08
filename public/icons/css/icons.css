@@ -1,0 +1,9 @@
+.container {height: 400px}
+p {
+    color: blue;
+}
+
+strong {
+    color: red;
+    text-decoration: underline;
+}
