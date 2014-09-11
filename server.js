@@ -3,6 +3,7 @@ var http = require('http');
 var path = require('path');
 var bodyParser = require('body-parser');
 var socketIo = require('socket.io');
+var game = require('./controllers/game');
 
 var app = express();
 var server = http.Server(app);
@@ -21,12 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', router.initialize(express));
 
-io.on('connection', function (socket) {
-	socket.emit('news', { hello: 'world' });
-	socket.on('my other event', function (data) {
-		console.log(data);
-	});
-});
+game.initialize(io);
 
 server.listen(port);
 console.log('Magic happens on ' + port + ' port!');

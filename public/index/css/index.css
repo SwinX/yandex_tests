@@ -13,46 +13,125 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-    background-color: #000;
+    background-color: #fff;
 }
 
-.login_container {
-    width: 400px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    margin-left: -200px;
-    margin-top: -200px;
-    display: inline-block;
-}
-
-.login_container h2 {
+h2 {
     text-align: center;
-    color: #fff;
+    color: #000;
     font-weight: 100;
     font-size: 200%;
 }
 
-.login_container input {
+input[type=text] {
+    width: 100%;
     height: 50px;
+    display: table;
     margin: 0 auto;
     padding: 0;
     text-align: center;
-    display: table;
     font-size: 200%;
     border: none;
-}
-
-.login_container input[type=text] {
-    width: 400px;
     background-color: transparent;
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #000;
     outline: none;
     letter-spacing: 3px;
-    color: #fff;
+    color: #000;
     font-weight: 100;
 }
 
-.error {
-    border: 2px solid red;
+.container {
+    position: relative;
+    width: 400px;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: 50px;
+}
+
+/* Content container */
+.contentContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* Login container*/
+.loginContainer {
+    z-index: 1;
+}
+
+/*Game container*/
+.gameContainer {
+    z-index: 2;
+}
+
+.gamePartContainer {
+    margin: 25px 0px;
+}
+
+.restartRoundContainer {
+    text-align: center;
+}
+
+.playersList {
+    list-style-type: none;
+    padding: 0;
+    margin-left: 1px;
+}
+
+.playersList li {
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    border-bottom: 1px solid #000;
+}
+
+.row {
+    overflow: hidden;
+}
+
+.col {
+    float: left;
+    width: 50%;
+    text-align: center;
+}
+
+/*Misc*/
+
+.button {
+    border: 1px solid #a0a0a0;
+    color: #1f1f1f;
+    outline: none;
+    height: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    margin: 5px;
+    padding: 0px 20px;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
+    background: #f0f0f0; /* Old browsers */
+    background: -moz-linear-gradient(top, #f0f0f0 0%, #e0e0e0 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f0f0f0), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #f0f0f0 0%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #f0f0f0 0%,#e0e0e0 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #f0f0f0 0%,#e0e0e0 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #f0f0f0 0%,#e0e0e0 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
+    box-sizing: content-box;
+}
+
+.button:active {
+    background: #a0a0a0; /* Old browsers */
+    background: -moz-linear-gradient(top,  #a0a0a0 0%, #b0b0b0 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a0a0a0), color-stop(100%,#b0b0b0)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #a0a0a0 0%,#b0b0b0 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #a0a0a0 0%,#b0b0b0 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #a0a0a0 0%,#b0b0b0 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #a0a0a0 0%,#b0b0b0 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#b0b0b0',GradientType=0 ); /* IE6-9 */
+}
+
+.displayNone {
+    display: none;
 }

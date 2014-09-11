@@ -2,8 +2,59 @@ extends layout
 block head
 	link(rel='stylesheet', href='/index/css/index.css')
 block content
-	.login_container
-		h2 Enter your name
-		input.loginInput(type='text', name='login', autofocus='autofocus' maxlength=17, autocomplete='off')
+	.container
+		.loginContainer.contentContainer
+			h2 Enter your name
+			input.loginInput(type='text', name='login', autofocus='autofocus' maxlength=17, autocomplete='off')
+		.gameContainer.contentContainer
+			.roundNameContainer.gamePartContainer
+				h2.roundTitle Unnamed round
+				input.roundNameInput(type='text', name='roundName', maxlength=12, autocomplete='off')
+			.restartRoundContainer.gamePartContainer
+				input.button(type='button', value='Restart round')
+			.estimateSettingContainer.gamePartContainer
+				h2 Evaluate a task
+				.row
+					.col
+						input.button(type='button', data-estimate='0.5', value='1/2')
+					.col
+						input.button(type='button', data-estimate='1', value='1')
+				.row
+					.col
+						input.button(type='button', data-estimate='2', value='2')
+					.col
+						input.button(type='button', data-estimate='3', value='3')
+				.row
+					.col
+						input.button(type='button', data-estimate='5', value='5')
+					.col
+						input.button(type='button', data-estimate='8', value='8')
+				.row
+					.col
+						input.button(type='button', data-estimate='13', value='13')
+					.col
+						input.button(type='button', data-estimate='20', value='20')
+				.row
+					.col
+						input.button(type='button', data-estimate='40', value='40')
+					.col
+						input.button(type='button', data-estimate='100', value='100')
+				.row
+					.col
+						input.button(type='button', data-estimate='infinity', value='∞')
+			.playersContainer.gamePartContainer
+				h2 Players
+				ul.playersList
+					li
+						.row
+							.col.playerName Serj Tatarson
+							.col.playerEstimate 1/2
+					li
+						.row
+							.col Petya
+							.col 3
+
+
 block bottom
+	script(type='text/javascript', src='/socket.io/socket.io.js')
 	script(type='text/javascript', src='/index/js/index.js')

@@ -5,7 +5,3 @@ var views = {
 exports.renderIndex = function(request, response) {
 	response.render(views.index);
 };
-
-exports.login = function(request, response) {
-
-};
