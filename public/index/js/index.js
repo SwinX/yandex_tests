@@ -93,7 +93,7 @@
 		function renderPlayer(player, mustShowEstimates) {
 			var $li = player.htmlNode || createPlayerNode();
 			$li.find(selectors.playerName).text(player.name);
-			$li.find(selectors.playerEstimate).text(mustShowEstimates ? player.estimate : '*');
+			$li.find(selectors.playerEstimate).text(mustShowEstimates ? player.estimate || 'No estimate' : '*');
 			player.htmlNode = $li;
 			return $li;
 		}
