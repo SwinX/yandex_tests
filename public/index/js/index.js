@@ -59,7 +59,7 @@
 		});
 
 		function login() {
-			var name = cleanInput($currentInput.val().trim());
+			var name = cleanInput($currentInput.val());
 			if (name) {
 				currentPlayerName = name;
 				socket.emit('addPlayer', name);
@@ -71,14 +71,15 @@
 		}
 
 		function changeRoundName() {
-			var newRoundName = cleanInput($.trim($currentInput.val()));
+			var newRoundName = cleanInput($currentInput.val());
 			if (newRoundName) {
 				renderRoundName(newRoundName);
 				socket.emit('roundNameChanged', newRoundName);
 			}
 		}
 
-		function cleanInput(login) {
+		function cleanInput(input) {
+			input = $.trim(input);
 			return $('<div/>').text(login).text();
 		}
 
