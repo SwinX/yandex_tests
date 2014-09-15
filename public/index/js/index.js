@@ -71,7 +71,7 @@
 		}
 
 		function changeRoundName() {
-			var newRoundName = cleanInput($currentInput.val().trim());
+			var newRoundName = cleanInput($.trim($currentInput.val()));
 			if (newRoundName) {
 				renderRoundName(newRoundName);
 				socket.emit('roundNameChanged', newRoundName);
