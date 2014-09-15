@@ -79,8 +79,8 @@
 		}
 
 		function cleanInput(input) {
-			input = $.trim(input);
-			return $('<div/>').text(login).text();
+			var trimmed = $.trim(input);
+			return $('<div/>').text(trimmed).text();
 		}
 
 		//rendering
