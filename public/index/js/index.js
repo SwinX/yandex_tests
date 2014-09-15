@@ -92,7 +92,9 @@
 
 		function renderPlayer(player, mustShowEstimates) {
 			var $li = player.htmlNode || createPlayerNode();
-			$li.find(selectors.playerName).text(player.name);
+			var $playerNameDiv = $li.find(selectors.playerName);
+			$playerNameDiv.text(player.name);
+			$playerNameDiv.css('color', player.name === currentPlayerName ? 'red' : 'black');
 			$li.find(selectors.playerEstimate).text(mustShowEstimates ? player.estimate || 'No estimate' : '*');
 			player.htmlNode = $li;
 			return $li;
