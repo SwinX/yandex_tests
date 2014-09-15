@@ -12,7 +12,9 @@
 		row: 'row',
 		col: 'col',
 		playerName: 'playerName',
-		playerEstimate: 'playerEstimate'
+		playerEstimate: 'playerEstimate',
+
+		displayNone: 'displayNone'
 	};
 
 	var selectors = pp.buildSelectors(classes, null);
@@ -103,13 +105,13 @@
 		function createPlayerNode() {
 			var $li = $('<li />');
 			var $row = $('<div />', {
-				class: classes.row
+				"class": classes.row
 			});
 			$row.append($('<div />', {
-				class: classes.playerName + ' ' + classes.col
+				"class": classes.playerName + ' ' + classes.col
 			}));
 			$row.append($('<div />', {
-				class: classes.playerEstimate + ' ' + classes.col
+				"class": classes.playerEstimate + ' ' + classes.col
 			}));
 			$li.append($row);
 			return $li;
@@ -124,6 +126,7 @@
 			$(selectors.loginContainer).fadeOut();
 			$(selectors.loginContainer).off('click');
 			$(selectors.gameContainer).show();
+			$(selectors.gameContainer).removeClass(classes.displayNone)
 			$currentInput = $(selectors.roundNameInput);
 			players = data.players;
 			$estimateButtons.prop('disabled', data.isRoundFinished);
