@@ -30,7 +30,8 @@
 	$(function() {
 		$(selectors.gameContainer).fadeOut(0);
 
-		$(window).on('keydown', function (event) {
+		$(document).on('keydown', function (e) {
+			var event = e || window.event;
 			if (!(event.ctrlKey || event.metaKey || event.altKey)) {
 				$currentInput.focus();
 			}
