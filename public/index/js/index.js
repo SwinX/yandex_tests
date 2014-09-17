@@ -31,8 +31,6 @@
 	var $estimateButtons = $(selectors.estimateSettingContainer).find('input[type=button]');
 
 	$(function() {
-		roundButtonsInEarlyIE();
-
 		$(selectors.gameContainer).fadeOut(0);
 
 		$(document).on('keydown', function (e) {
@@ -86,12 +84,6 @@
 		function cleanInput(input) {
 			var trimmed = $.trim(input);
 			return $('<div/>').text(trimmed).text();
-		}
-
-		function roundButtonsInEarlyIE() {
-			if (!document.addEventListener) {
-				$(selectors.button).addClass(selectors.buttonIE8);
-			}
 		}
 
 		//rendering
