@@ -139,6 +139,15 @@ input[type=text] {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#b0b0b0',GradientType=0 ); /* IE6-9 */
 }
 
+.buttonIE8 {
+    background-image: url(../images/ie8_rounded_button_bg.png);
+    background-repeat: no-repeat;
+    position: absolute;
+}
+
+.rounded{position: relative; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px; }
+.tl, .tr, .bl, .br{}
+
 .displayNone {
     display: none;
 }
