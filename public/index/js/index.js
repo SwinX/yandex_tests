@@ -90,7 +90,7 @@
 
 		function roundButtonsInEarlyIE() {
 			if (!document.addEventListener) {
-				$(classes.button).addClass(selectors.buttonIE8);
+				$(selectors.button).addClass(selectors.buttonIE8);
 			}
 		}
 
