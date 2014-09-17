@@ -142,7 +142,7 @@ input[type=text] {
 .buttonIE8 {
     background-image: url(../images/ie8_rounded_button_bg.png);
     background-repeat: no-repeat;
-    position: absolute;
+    /*position: absolute;*/
 }
 
 .rounded{position: relative; -moz-border-radius: 30px; -webkit-border-radius: 30px; border-radius: 30px; }
