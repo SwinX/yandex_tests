@@ -153,6 +153,7 @@ input[type=text] {
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
+    behavior: url(/htc/PIE.htc);
 }
 
 .displayNone {
