@@ -11,37 +11,49 @@ block content
 				h2.roundTitle Unnamed round
 				input.roundNameInput(type='text', name='roundName', maxlength=12, autocomplete='off')
 			.restartRoundContainer.gamePartContainer
-				input.button.buttonIE8(type='button', value='Restart round')
+				.buttonBorder
+					input.button(type='button', value='Restart round')
 			.estimateSettingContainer.gamePartContainer
 				h2 Evaluate a task
 				.row
 					.col
-						input.button(type='button', data-estimate='0.5', value='1/2')
+						.buttonBorder
+							input.button(type='button', data-estimate='0.5', value='1/2')
 					.col
-						input.button(type='button', data-estimate='1', value='1')
+						.buttonBorder
+							input.button(type='button', data-estimate='1', value='1')
 				.row
 					.col
-						input.button(type='button', data-estimate='2', value='2')
+						.buttonBorder
+							input.button(type='button', data-estimate='2', value='2')
 					.col
-						input.button(type='button', data-estimate='3', value='3')
+						.buttonBorder
+							input.button(type='button', data-estimate='3', value='3')
 				.row
 					.col
-						input.button(type='button', data-estimate='5', value='5')
+						.buttonBorder
+							input.button(type='button', data-estimate='5', value='5')
 					.col
-						input.button(type='button', data-estimate='8', value='8')
+						.buttonBorder
+							input.button(type='button', data-estimate='8', value='8')
 				.row
 					.col
-						input.button(type='button', data-estimate='13', value='13')
+						.buttonBorder
+							input.button(type='button', data-estimate='13', value='13')
 					.col
-						input.button(type='button', data-estimate='20', value='20')
+						.buttonBorder
+							input.button(type='button', data-estimate='20', value='20')
 				.row
 					.col
-						input.button(type='button', data-estimate='40', value='40')
+						.buttonBorder
+							input.button(type='button', data-estimate='40', value='40')
 					.col
-						input.button(type='button', data-estimate='100', value='100')
+						.buttonBorder
+							input.button(type='button', data-estimate='100', value='100')
 				.row
 					.col
-						input.button(type='button', data-estimate='infinity', value='∞')
+						.buttonBorder
+							input.button(type='button', data-estimate='infinity', value='∞')
 			.playersContainer.gamePartContainer
 				h2 Players
 				ul.playersList

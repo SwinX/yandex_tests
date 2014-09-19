@@ -15,7 +15,6 @@
 		playerEstimate: 'playerEstimate',
 
 		button: 'button',
-		buttonIE8: 'buttonIE8',
 
 		displayNone: 'displayNone'
 	};
@@ -84,6 +83,15 @@
 		function cleanInput(input) {
 			var trimmed = $.trim(input);
 			return $('<div/>').text(trimmed).text();
+		}
+
+		function enableEstimateButtons() {
+			$estimateButtons.removeClass(classes.buttonDisabled);
+			$estimateButtons.addC
+		}
+
+		function disableEstimateButtons() {
+
 		}
 
 		//rendering

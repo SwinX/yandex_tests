@@ -106,13 +106,12 @@ input[type=text] {
 /*Misc*/
 
 .button {
-    border: 1px solid #a0a0a0;
-    color: #1f1f1f;
+    border:  1px solid transparent;
     outline: none;
     height: 20px;
     font-size: 10px;
     font-weight: 600;
-    margin: 5px;
+    margin: 0px;
     padding: 0px 20px;
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
@@ -125,9 +124,15 @@ input[type=text] {
     background: -ms-linear-gradient(top, #f0f0f0 0%,#e0e0e0 100%); /* IE10+ */
     background: linear-gradient(to bottom, #f0f0f0 0%,#e0e0e0 100%); /* W3C */
     -pie-background: linear-gradient(top, #f0f0f0, #e0e0e0);
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e0e0e0',GradientType=0 ); *//* IE6-9 */
     box-sizing: content-box;
     behavior: url(/htc/PIE.htc);
+}
+.buttonEnabled {
+    color: #1f1f1f;
+}
+
+.buttonDisabled {
+    color: #dddddd
 }
 
 .button:active {
@@ -139,7 +144,15 @@ input[type=text] {
     background: -ms-linear-gradient(top,  #a0a0a0 0%,#b0b0b0 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #a0a0a0 0%,#b0b0b0 100%); /* W3C */
     -pie-background: linear-gradient(top, #a0a0a0, #b0b0b0);
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#b0b0b0',GradientType=0 ); *//* IE6-9 */
+}
+
+.buttonBorder {
+    display: inline-block;
+    margin: 5px;
+    border: 1px solid #a0a0a0;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    border-radius: 7px;
 }
 
 .displayNone {
