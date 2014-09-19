@@ -126,7 +126,7 @@ input[type=text] {
     background: linear-gradient(to bottom, #f0f0f0 0%,#e0e0e0 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f0f0f0', endColorstr='#e0e0e0',GradientType=0 ); /* IE6-9 */
     box-sizing: content-box;
-    behavior: url(htc/PIE.htc);
+    behavior: url(/htc/PIE.htc);
 }
 
 .button:active {
