@@ -138,7 +138,8 @@ input[type=text] {
     background: -o-linear-gradient(top,  #a0a0a0 0%,#b0b0b0 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #a0a0a0 0%,#b0b0b0 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #a0a0a0 0%,#b0b0b0 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#b0b0b0',GradientType=0 ); /* IE6-9 */
+    -pie-background: linear-gradient(top, #a0a0a0, #b0b0b0);
+    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a0a0a0', endColorstr='#b0b0b0',GradientType=0 ); *//* IE6-9 */
 }
 
 .displayNone {
