@@ -108,7 +108,7 @@ input[type=text] {
 .button {
     border:  1px solid transparent;
     outline: none;
-    height: 20px;
+    height: 18px;
     font-size: 10px;
     font-weight: 600;
     margin: 0px;
@@ -153,6 +153,7 @@ input[type=text] {
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
+    font-size: 0;
     behavior: url(/htc/PIE.htc);
 }
 
