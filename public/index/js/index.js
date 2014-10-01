@@ -85,15 +85,6 @@
 			return $('<div/>').text(trimmed).text();
 		}
 
-		function enableEstimateButtons() {
-			$estimateButtons.removeClass(classes.buttonDisabled);
-			$estimateButtons.addC
-		}
-
-		function disableEstimateButtons() {
-
-		}
-
 		//rendering
 
 		function renderPlayers(mustShowEstimates) {
