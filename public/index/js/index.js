@@ -89,7 +89,7 @@
 
 		function renderPlayers(mustShowEstimates) {
 			$playersList.empty();
-			for (player in players) {
+			for (var player in players) {
 				if (players.hasOwnProperty(player)) {
 					$playersList.append(renderPlayer(players[player], mustShowEstimates));
 				}
@@ -130,7 +130,7 @@
 			$(selectors.loginContainer).fadeOut();
 			$(selectors.loginContainer).off('click');
 			$(selectors.gameContainer).show();
-			$(selectors.gameContainer).removeClass(classes.displayNone)
+			$(selectors.gameContainer).removeClass(classes.displayNone);
 			$currentInput = $(selectors.roundNameInput);
 			players = data.players;
 			$estimateButtons.prop('disabled', data.isRoundFinished);
@@ -161,7 +161,7 @@
 			if (!isLoggedIn()) {
 				return;
 			}
-			for (player in players) {
+			for (var player in players) {
 				if (players.hasOwnProperty(player)) {
 					players[player].estimate = null;
 				}
@@ -174,7 +174,7 @@
 			if (!isLoggedIn()) {
 				return;
 			}
-			for (player in finishedPlayers) {
+			for (var player in finishedPlayers) {
 				if (finishedPlayers.hasOwnProperty(player)) {
 					players[player].estimate = finishedPlayers[player].estimate;
 				}
