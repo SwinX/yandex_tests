@@ -98,7 +98,6 @@
 		$playerNameDiv.css('color', player.id === this.currentPlayerId ? 'red' : 'black');
 		$li.find(selectors.playerEstimate).text(mustShowEstimates ? player.estimate || 'No estimate' : '*');
 		this._$playersList.append($li);
-		return $li;
 	};
 
 	View.prototype.removePlayerNode = function(player) {
@@ -135,7 +134,7 @@
 		return $li;
 	};
 
-	window.View = View;
+	pp.View = View;
 
 })();
 

@@ -1,6 +1,6 @@
 (function () {
 	var socket = io();
-	var view = new View();
+	var view = new pp.View();
 
 	var currentPlayerId = null;
 	var players = null;
@@ -57,8 +57,7 @@
 		}
 
 		function cleanInput(input) {
-			var trimmed = $.trim(input);
-			return $('<div/>').text(trimmed).text();
+			return $.trim(input);
 		}
 
 		//Socket evens
