@@ -63,15 +63,12 @@ Game.prototype.onNewRound = function() {
 };
 
 Game.prototype._areTurnsAvailable = function() {
-	for (var playerId in this._players) {
-		if (this._players.hasOwnProperty(playerId)) {
-			var player = this._players[playerId];
-			if (!player.isTurnPerformed()) {
-				return true;
-			}
-		}
-	}
-	return false;
+	var self = this;
+	var result = Object.keys(this._players).some(function(playerName) {
+		var player = self._players[playerName];
+		return !player.isTurnPerformed();
+	});
+	return result;
 };
 
 Game.prototype._tryFinishRound = function() {
