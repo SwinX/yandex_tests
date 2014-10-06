@@ -22,8 +22,9 @@
 	var selectors = pp.buildSelectors(classes, null);
 
 	var socket = io();
-	var currentPlayerName = null;
+	var currentPlayerId = null;
 	var players = null;
+	var isRoundFinished = false;
 	var $currentInput = $(selectors.loginInput).focus();
 
 	var $playersList = $(selectors.playersList);
@@ -55,7 +56,7 @@
 			socket.emit('turn', estimate);
 			$estimateButtons.prop('disabled', true);
 
-			var currentPlayer = players[currentPlayerName];
+			var currentPlayer = players[currentPlayerId];
 			currentPlayer.estimate = estimate;
 			renderPlayer(currentPlayer, true);
 		});
@@ -63,7 +64,6 @@
 		function login() {
 			var name = cleanInput($currentInput.val());
 			if (name) {
-				currentPlayerName = name;
 				socket.emit('addPlayer', name);
 			}
 		}
@@ -76,7 +76,7 @@
 			var newRoundName = cleanInput($currentInput.val());
 			if (newRoundName) {
 				renderRoundName(newRoundName);
-				socket.emit('roundNameChanged', newRoundName);
+				socket.emit('changeRoundName', newRoundName);
 			}
 		}
 
@@ -100,7 +100,7 @@
 			var $li = player.htmlNode || createPlayerNode();
 			var $playerNameDiv = $li.find(selectors.playerName);
 			$playerNameDiv.text(player.name);
-			$playerNameDiv.css('color', player.name === currentPlayerName ? 'red' : 'black');
+			$playerNameDiv.css('color', player.name === currentPlayerId ? 'red' : 'black');
 			$li.find(selectors.playerEstimate).text(mustShowEstimates ? player.estimate || 'No estimate' : '*');
 			player.htmlNode = $li;
 			return $li;
@@ -132,28 +132,30 @@
 			$(selectors.gameContainer).show();
 			$(selectors.gameContainer).removeClass(classes.displayNone);
 			$currentInput = $(selectors.roundNameInput);
+			currentPlayerId = data.currentPlayer.id;
 			players = data.players;
-			$estimateButtons.prop('disabled', data.isRoundFinished);
+			isRoundFinished = data.isRoundFinished;
+			$estimateButtons.prop('disabled', isRoundFinished);
 			renderRoundName(data.roundName);
-			renderPlayers(data.isRoundFinished);
+			renderPlayers(isRoundFinished);
 		});
 
-		socket.on('roundNameChanged', function(newRoundName) {
+		socket.on('changeRoundName', function(newRoundName) {
 			renderRoundName(newRoundName);
 		});
 
 		socket.on('playerJoined', function(player) {
 			if (isLoggedIn()) {
-				players[player.name] = player;
-				$playersList.append(renderPlayer(player, false));
+				players[player.id] = player;
+				$playersList.append(renderPlayer(player, isRoundFinished));
 			}
 		});
 
 		socket.on('playerLeft', function(player) {
 			if (isLoggedIn()) {
-				var leftPlayer = players[player.name];
+				var leftPlayer = players[player.id];
 				leftPlayer.htmlNode.remove();
-				delete players[leftPlayer.name];
+				delete players[leftPlayer.id];
 			}
 		});
 
@@ -161,9 +163,10 @@
 			if (!isLoggedIn()) {
 				return;
 			}
-			for (var player in players) {
-				if (players.hasOwnProperty(player)) {
-					players[player].estimate = null;
+			isRoundFinished = true;
+			for (var playerId in players) {
+				if (players.hasOwnProperty(playerId)) {
+					players[playerId].estimate = null;
 				}
 			}
 			$estimateButtons.prop('disabled', false);
@@ -174,12 +177,13 @@
 			if (!isLoggedIn()) {
 				return;
 			}
-			for (var player in finishedPlayers) {
-				if (finishedPlayers.hasOwnProperty(player)) {
-					players[player].estimate = finishedPlayers[player].estimate;
+			isRoundFinished = true;
+			for (var playerId in finishedPlayers) {
+				if (finishedPlayers.hasOwnProperty(playerId)) {
+					players[playerId].estimate = finishedPlayers[playerId].estimate;
 				}
 			}
-			renderPlayers(true);
+			renderPlayers(isRoundFinished);
 		});
 	});
 })();
