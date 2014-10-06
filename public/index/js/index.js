@@ -6,15 +6,13 @@
 	var players = null;
 	var isRoundFinished = false;
 
-	var $currentInput = view.getLoginInput().focus();
-
 	$(function() {
 		view.toggleGameContainer(false);
 
 		$(document).on('keydown', function (e) {
 			var event = e || window.event;
 			if (!(event.ctrlKey || event.metaKey || event.altKey)) {
-				$currentInput.focus();
+				view.focusOnCurrentInput();
 			}
 			if (event.which === 13) {
 				if (isLoggedIn()) {
@@ -25,14 +23,14 @@
 			}
 		});
 
-		view.getRestartRoundButton().on('click', function() {
+		view.onRestartRoundButtonClick(function() {
 			socket.emit('newRound');
 		});
 
-		view.getEstimateButtons().on('click', function() {
+		view.onEstimateButtonClick(function() {
 			var estimate = $(this).data('estimate');
 			socket.emit('turn', estimate);
-			view.getEstimateButtons().prop('disabled', true);
+			view.toggleEstimateButtonsDisabled(true);
 
 			var currentPlayer = players[currentPlayerId];
 			currentPlayer.estimate = estimate;
@@ -40,7 +38,7 @@
 		});
 
 		function login() {
-			var name = cleanInput($currentInput.val());
+			var name = cleanInput(view.getCurrentInputValue());
 			if (name) {
 				socket.emit('addPlayer', name);
 			}
@@ -51,7 +49,7 @@
 		}
 
 		function changeRoundName() {
-			var newRoundName = cleanInput($currentInput.val());
+			var newRoundName = cleanInput(view.getCurrentInputValue());
 			if (newRoundName) {
 				view.renderRoundName(newRoundName);
 				socket.emit('changeRoundName', newRoundName);
@@ -68,13 +66,13 @@
 			view.toggleLoginContainer(false);
 			view.toggleGameContainer(true);
 
-			$currentInput = view.getRoundNameInput();
+			view.focusRoundNameInput();
 
 			currentPlayerId = data.currentPlayer.id;
 			players = data.players;
 
 			isRoundFinished = data.isRoundFinished;
-			view.getEstimateButtons().prop('disabled', isRoundFinished);
+			view.toggleEstimateButtonsDisabled(isRoundFinished);
 
 			view.currentPlayerId = currentPlayerId;
 			view.renderRoundName(data.roundName);
@@ -110,7 +108,7 @@
 					players[playerId].estimate = null;
 				}
 			}
-			view.getEstimateButtons().prop('disabled', false);
+			view.toggleEstimateButtonsDisabled(isRoundFinished);
 			view.renderPlayers(players, isRoundFinished);
 		});
 

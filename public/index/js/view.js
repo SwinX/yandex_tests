@@ -30,24 +30,37 @@
 
 		this._playerNodes = {};
 
+		this._$currentInput = $(selectors.loginInput).focus();
 		this._$playersList = $(selectors.playersList);
 		this._$estimateButtons = $(selectors.estimateSettingContainer).find('input[type=button]');
 	};
 
-	View.prototype.getEstimateButtons = function() {
-		return this._$estimateButtons;
+	View.prototype.onEstimateButtonClick = function(handler) {
+		this._$estimateButtons.on('click', handler);
 	};
 
-	View.prototype.getRestartRoundButton = function() {
-		return $(selectors.restartRoundContainer).find('input[type=button]');
+	View.prototype.onRestartRoundButtonClick = function(handler) {
+		$(selectors.restartRoundContainer).find('input[type=button]').on('click', handler);
 	};
 
-	View.prototype.getLoginInput = function() {
-		return $(selectors.loginInput);
+	View.prototype.toggleEstimateButtonsDisabled = function(disabledOrNot) {
+		this._$estimateButtons.prop('disabled', disabledOrNot);
 	};
 
-	View.prototype.getRoundNameInput = function() {
-		return $(selectors.roundNameInput);
+	View.prototype.focusLoginInput = function() {
+		this._$currentInput = $(selectors.loginInput);
+	};
+
+	View.prototype.focusRoundNameInput = function() {
+		this._$currentInput = $(selectors.roundNameInput);
+	};
+
+	View.prototype.focusOnCurrentInput = function() {
+		this._$currentInput.focus();
+	};
+
+	View.prototype.getCurrentInputValue = function() {
+		return this._$currentInput.val();
 	};
 
 	View.prototype.toggleLoginContainer = function(showOrHide) {
