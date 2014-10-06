@@ -1,7 +1,7 @@
 (function() {
 	window.pp = {}; // PP is short for Planning Poker
 
-	var buildSelectors = function(selectors, source, characterToPrependWith) {
+	function buildSelectors(selectors, source, characterToPrependWith) {
 		$.each(source, function(propertyName, value){
 			selectors[propertyName] = characterToPrependWith + value;
 		});

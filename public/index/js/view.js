@@ -30,10 +30,11 @@
 
 		this._playerNodes = {};
 
-		this._$currentInput = $(selectors.loginInput).focus();
+		this._$currentInput = null;
+		this.focusLoginInput();
 		this._$playersList = $(selectors.playersList);
 		this._$estimateButtons = $(selectors.estimateSettingContainer).find('input[type=button]');
-	};
+	}
 
 	View.prototype.onEstimateButtonClick = function(handler) {
 		this._$estimateButtons.on('click', handler);
