@@ -1,15 +1,15 @@
 (function () {
 	var socket = io();
-	var renderer = new Renderer();
+	var view = new View();
 
 	var currentPlayerId = null;
 	var players = null;
 	var isRoundFinished = false;
 
-	var $currentInput = renderer.getLoginInput().focus();
+	var $currentInput = view.getLoginInput().focus();
 
 	$(function() {
-		renderer.toggleGameContainer(false);
+		view.toggleGameContainer(false);
 
 		$(document).on('keydown', function (e) {
 			var event = e || window.event;
@@ -25,18 +25,18 @@
 			}
 		});
 
-		renderer.getRestartRoundButton().on('click', function() {
+		view.getRestartRoundButton().on('click', function() {
 			socket.emit('newRound');
 		});
 
-		renderer.getEstimateButtons().on('click', function() {
+		view.getEstimateButtons().on('click', function() {
 			var estimate = $(this).data('estimate');
 			socket.emit('turn', estimate);
-			renderer.getEstimateButtons().prop('disabled', true);
+			view.getEstimateButtons().prop('disabled', true);
 
 			var currentPlayer = players[currentPlayerId];
 			currentPlayer.estimate = estimate;
-			renderer.renderPlayer(currentPlayer, true);
+			view.renderPlayer(currentPlayer, true);
 		});
 
 		function login() {
@@ -53,7 +53,7 @@
 		function changeRoundName() {
 			var newRoundName = cleanInput($currentInput.val());
 			if (newRoundName) {
-				renderer.renderRoundName(newRoundName);
+				view.renderRoundName(newRoundName);
 				socket.emit('changeRoundName', newRoundName);
 			}
 		}
@@ -65,37 +65,37 @@
 
 		//Socket evens
 		socket.on('login', function(data) {
-			renderer.toggleLoginContainer(false);
-			renderer.toggleGameContainer(true);
+			view.toggleLoginContainer(false);
+			view.toggleGameContainer(true);
 
-			$currentInput = renderer.getRoundNameInput();
+			$currentInput = view.getRoundNameInput();
 
 			currentPlayerId = data.currentPlayer.id;
 			players = data.players;
 
 			isRoundFinished = data.isRoundFinished;
-			renderer.getEstimateButtons().prop('disabled', isRoundFinished);
+			view.getEstimateButtons().prop('disabled', isRoundFinished);
 
-			renderer.currentPlayerId = currentPlayerId;
-			renderer.renderRoundName(data.roundName);
-			renderer.renderPlayers(players, isRoundFinished);
+			view.currentPlayerId = currentPlayerId;
+			view.renderRoundName(data.roundName);
+			view.renderPlayers(players, isRoundFinished);
 		});
 
 		socket.on('changeRoundName', function(newRoundName) {
-			renderer.renderRoundName(newRoundName);
+			view.renderRoundName(newRoundName);
 		});
 
 		socket.on('playerJoined', function(player) {
 			if (isLoggedIn()) {
 				players[player.id] = player;
-				renderer.renderPlayer(player, isRoundFinished);
+				view.renderPlayer(player, isRoundFinished);
 			}
 		});
 
 		socket.on('playerLeft', function(player) {
 			if (isLoggedIn()) {
 				var leftPlayer = players[player.id];
-				renderer.removePlayerNode(leftPlayer);
+				view.removePlayerNode(leftPlayer);
 				delete players[leftPlayer.id];
 			}
 		});
@@ -110,8 +110,8 @@
 					players[playerId].estimate = null;
 				}
 			}
-			renderer.getEstimateButtons().prop('disabled', false);
-			renderer.renderPlayers(players, isRoundFinished);
+			view.getEstimateButtons().prop('disabled', false);
+			view.renderPlayers(players, isRoundFinished);
 		});
 
 		socket.on('roundFinished', function(finishedPlayers) {
@@ -124,7 +124,7 @@
 					players[playerId].estimate = finishedPlayers[playerId].estimate;
 				}
 			}
-			renderer.renderPlayers(players, isRoundFinished);
+			view.renderPlayers(players, isRoundFinished);
 		});
 	});
 })();

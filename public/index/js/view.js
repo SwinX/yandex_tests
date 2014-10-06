@@ -21,8 +21,8 @@
 
 	var selectors = pp.buildSelectors(classes, null);
 
-	function Renderer() {
-		if (!this instanceof  Renderer) {
+	function View() {
+		if (!this instanceof  View) {
 			throw new Error('Renderer constructor called without "new".');
 		}
 
@@ -34,31 +34,31 @@
 		this._$estimateButtons = $(selectors.estimateSettingContainer).find('input[type=button]');
 	};
 
-	Renderer.prototype.getEstimateButtons = function() {
+	View.prototype.getEstimateButtons = function() {
 		return this._$estimateButtons;
 	};
 
-	Renderer.prototype.getRestartRoundButton = function() {
+	View.prototype.getRestartRoundButton = function() {
 		return $(selectors.restartRoundContainer).find('input[type=button]');
 	};
 
-	Renderer.prototype.getLoginInput = function() {
+	View.prototype.getLoginInput = function() {
 		return $(selectors.loginInput);
 	};
 
-	Renderer.prototype.getRoundNameInput = function() {
+	View.prototype.getRoundNameInput = function() {
 		return $(selectors.roundNameInput);
 	};
 
-	Renderer.prototype.toggleLoginContainer = function(showOrHide) {
+	View.prototype.toggleLoginContainer = function(showOrHide) {
 		this._toggleContainer($(selectors.loginContainer), showOrHide);
 	};
 
-	Renderer.prototype.toggleGameContainer = function(showOrHide) {
+	View.prototype.toggleGameContainer = function(showOrHide) {
 		this._toggleContainer($(selectors.gameContainer), showOrHide);
 	};
 
-	Renderer.prototype._toggleContainer = function($container, showOrHide) {
+	View.prototype._toggleContainer = function($container, showOrHide) {
 		if (showOrHide) {
 			$container.show();
 			$container.removeClass(classes.displayNone);
@@ -68,7 +68,7 @@
 		}
 	};
 
-	Renderer.prototype.renderPlayers = function(players, mustShowEstimates) {
+	View.prototype.renderPlayers = function(players, mustShowEstimates) {
 		this._$playersList.empty();
 		for (var playerId in players) {
 			if (players.hasOwnProperty(playerId)) {
@@ -77,7 +77,7 @@
 		}
 	};
 
-	Renderer.prototype.renderPlayer = function(player, mustShowEstimates) {
+	View.prototype.renderPlayer = function(player, mustShowEstimates) {
 		var $li = this._getPlayerNode(player);
 		var $playerNameDiv = $li.find(selectors.playerName);
 		$playerNameDiv.text(player.name);
@@ -87,18 +87,18 @@
 		return $li;
 	};
 
-	Renderer.prototype.removePlayerNode = function(player) {
+	View.prototype.removePlayerNode = function(player) {
 		if (this._playerNodes[player.id]) {
 			this._playerNodes[player.id].remove();
 			delete this._playerNodes[player.id];
 		}
 	};
 
-	Renderer.prototype.renderRoundName = function(roundName) {
+	View.prototype.renderRoundName = function(roundName) {
 		$(selectors.roundTitle).text(roundName);
 	};
 
-	Renderer.prototype._getPlayerNode = function(player) {
+	View.prototype._getPlayerNode = function(player) {
 		var node = this._playerNodes[player.id];
 		if (!node) {
 			this._playerNodes[player.id] = this._createPlayerNode();
@@ -106,7 +106,7 @@
 		return this._playerNodes[player.id];
 	};
 
-	Renderer.prototype._createPlayerNode = function() {
+	View.prototype._createPlayerNode = function() {
 		var $li = $('<li />');
 		var $row = $('<div />', {
 			"class": classes.row
@@ -121,7 +121,7 @@
 		return $li;
 	};
 
-	window.Renderer = Renderer;
+	window.View = View;
 
 })();
 
