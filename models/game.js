@@ -64,11 +64,10 @@ Game.prototype.onNewRound = function() {
 
 Game.prototype._areTurnsAvailable = function() {
 	var self = this;
-	var result = Object.keys(this._players).some(function(playerName) {
+	return Object.keys(this._players).some(function(playerName) {
 		var player = self._players[playerName];
 		return !player.isTurnPerformed();
 	});
-	return result;
 };
 
 Game.prototype._tryFinishRound = function() {
